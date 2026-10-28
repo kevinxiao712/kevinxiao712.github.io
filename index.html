@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Xiao Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Kevin Xiao: game producer and systems programmer. MS Game Design at RIT. Shipped Icarian on Steam.">
+<meta property="og:title" content="Kevin Xiao | Game Producer & Programmer">
+<meta property="og:description" content="Producer and systems programmer on Icarian (Steam). MS Game Design, RIT. QA at Tencent, engineering at Klipsch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single column "credits roll" — name card, one featured shipped title, a grid of jam/studio projects, then experience and links as credit lines. */
+:root{
+  --bg:#EDEFF4; --surface:#FFFFFF; --ink:#141722; --muted:#5A6075; --line:#D3D7E2;
+  --accent:#2B3FD4; --accent-ink:#FFFFFF; --tint:#DDE2FA;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1018; --surface:#171A25; --ink:#E8EAF2; --muted:#9AA0B6; --line:#2A2F40;
+  --accent:#8E9CFF; --accent-ink:#0E1018; --tint:#1E2440; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1018; --surface:#171A25; --ink:#E8EAF2; --muted:#9AA0B6; --line:#2A2F40;
+  --accent:#8E9CFF; --accent-ink:#0E1018; --tint:#1E2440; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.95;text-wrap:balance;margin:0;letter-spacing:.005em;text-transform:uppercase}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+section > .label{display:block;margin-bottom:24px}
+
+/* Header */
+header{padding-block:56px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:56px}
+.top nav{display:flex;gap:20px;flex-wrap:wrap}
+.top nav a{font:500 13px var(--mono);text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--accent)}
+.mark{font:800 22px var(--display);letter-spacing:.04em;text-decoration:none}
+.mark span{color:var(--accent)}
+h1{font-size:clamp(64px,13vw,148px)}
+.roles{font:600 clamp(20px,3vw,28px)/1.2 var(--display);text-transform:uppercase;letter-spacing:.02em;margin-top:14px;color:var(--accent)}
+.intro{max-width:60ch;font-size:18px;color:var(--muted);margin:22px 0 28px}
+.intro strong{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:6px;font:600 15px var(--body);text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+
+/* Featured */
+.feature{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:center}
+.feature h2{font-size:clamp(52px,8vw,92px)}
+.badge{display:inline-block;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:5px 10px;border-radius:4px;margin-bottom:16px}
+.credit{font:500 14px var(--mono);margin:14px 0 18px;color:var(--ink)}
+.credit span{color:var(--muted)}
+ul.did{margin:0 0 22px;padding-left:18px;color:var(--muted)}
+ul.did li{margin-bottom:6px}
+ul.did li::marker{color:var(--accent)}
+
+/* Media frames with typographic fallback when no screenshot is present */
+.shot{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:8px;overflow:hidden;background:var(--tint);border:1px solid var(--line)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot .fb{position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;font:800 clamp(28px,4vw,44px)/.9 var(--display);text-transform:uppercase;color:var(--accent);
+  background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--accent) 9%,transparent) 14px 15px)}
+
+/* Project grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h3{font-size:34px}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.meta{font:500 12px var(--mono);color:var(--ink)}
+.stats{display:flex;gap:18px;flex-wrap:wrap;font:500 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.stats b{display:block;font:800 22px var(--display);color:var(--ink)}
+.more{font:600 14px var(--body);color:var(--accent);text-decoration:none;margin-top:auto}
+.more:hover{text-decoration:underline}
+
+/* Experience as credit lines */
+.roll{display:grid;gap:0}
+.row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding-block:20px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .when{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.row h3{font-size:26px;margin-bottom:4px}
+.row h3 small{font:500 13px var(--mono);color:var(--muted);text-transform:none;letter-spacing:0;margin-left:6px}
+.row p{margin:0;color:var(--muted);max-width:64ch}
+
+/* Links */
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.links a{display:block;padding:16px;border:1px solid var(--line);border-radius:6px;text-decoration:none;background:var(--surface)}
+.links a:hover{border-color:var(--accent)}
+.links b{display:block;font:800 20px var(--display);text-transform:uppercase}
+.links span{font:400 13px var(--mono);color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:40px 56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+footer .email{font:800 clamp(26px,5vw,44px) var(--display);text-transform:uppercase;user-select:all;word-break:break-all}
+footer .label a{text-decoration:none}
+
+@media (max-width:820px){
+  .feature{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:560px){ .grid{grid-template-columns:1fr} .top{margin-bottom:36px} }
+@media (prefers-reduced-motion:reduce){ .btn:hover{transform:none} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="top">
+    <a class="mark" href="#">KX<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a><a href="#experience">Experience</a><a href="#elsewhere">Elsewhere</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <h1>Kevin Xiao</h1>
+  <div class="roles">Producer · Systems Programmer · Game Designer</div>
+  <p class="intro">MS Game Design student at <strong>RIT</strong> with a CS and History background from Skidmore. I shipped <strong>Icarian</strong>, a free arcade flying-combat game on Steam, as producer and systems programmer, did QA and user testing at <strong>Tencent</strong>, and built app features at <strong>Klipsch</strong>. I work in Unity and Unreal.</p>
+  <div class="cta">
+    <a class="btn primary" href="resume.pdf">Résumé (PDF)</a>
+    <a class="btn" href="https://store.steampowered.com/app/4381000/Icarian/">Icarian on Steam</a>
+  </div>
+</header>
+
+<section id="work">
+  <span class="label">Shipped</span>
+  <div class="feature">
+    <div class="shot"><img src="images/icarian.png" alt="Icarian screenshot" onerror="this.remove()"><div class="fb">Icarian</div></div>
+    <div>
+      <span class="badge">Out now on Steam</span>
+      <h2>Icarian</h2>
+      <div class="credit">Producer / Systems Programmer <span>· Two Artists (RIT capstone team) · Released May 21, 2026</span></div>
+      <p class="intro" style="margin:0 0 16px;font-size:16px">Post-apocalyptic arcade flying combat. You play IX, an android hunting rogue mechs through handcrafted aerial arenas, with melee combos, parries, missile dodging and a lock-on camera. Boss fights in Desert and Ocean arenas.</p>
+      <ul class="did">
+        <li>Ran the schedule: timelines, task assignment and tracking, milestone delivery.</li>
+        <li>Built core game systems as the team's systems programmer.</li>
+      </ul>
+      <div class="stats" style="margin-bottom:20px"><div><b>Free</b>On Steam</div><div><b>3D</b>Third person</div><div><b>Win</b>10 / 11</div></div>
+      <a class="more" href="https://store.steampowered.com/app/4381000/Icarian/">Play free on Steam →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="label">Projects</span>
+  <div class="grid">
+    <article class="card">
+      <div class="shot"><img src="images/charons-companion.png" alt="Charon's Companion screenshot" onerror="this.remove()"><div class="fb">Charon's<br>Companion</div></div>
+      <div class="meta">Tech Lead / Game Design · RIT Production Studio</div>
+      <h3><a href="https://vwl2.itch.io/charons-companion">Charon's Companion</a></h3>
+      <p>3D adventure platformer. You play Shadow, a cat crossing the underworld to piece together its late owner's shattered soul. Shown at RIT's Imagine festival.</p>
+      <a class="more" href="https://vwl2.itch.io/charons-companion">Play on itch.io →</a>
+    </article>
+    <article class="card">
+      <div class="shot"><img src="images/bowling.png" alt="Bowling But You Are The Pins screenshot" onerror="this.remove()"><div class="fb">Bowling<br>But You're<br>The Pins</div></div>
+      <div class="meta">Programmer / Level Design · GMTK Game Jam 2023</div>
+      <h3><a href="https://cornerseatstudios.itch.io/bowling-but-ur-the-pins">Bowling But You Are The Pins</a></h3>
+      <p>Physics puzzler built in 48 hours for the "Roles Reversed" theme. You arrange the pins; the ball still has to get a strike.</p>
+      <div class="stats"><div><b>3.82</b>Presentation / 5</div><div><b>125</b>Player ratings</div><div><b>48h</b>Jam build</div></div>
+      <a class="more" href="https://cornerseatstudios.itch.io/bowling-but-ur-the-pins">Play in browser →</a>
+    </article>
+    <article class="card">
+      <div class="shot"><img src="images/gravebound.png" alt="Gravebound screenshot" onerror="this.remove()"><div class="fb">Gravebound</div></div>
+      <div class="meta">Programmer / Level &amp; Sound Design · Team MAXXL · Unity · Dec 2024</div>
+      <h3><a href="https://qusr.itch.io/gravebound">Gravebound</a></h3>
+      <p>Two-player co-op puzzle game set in a graveyard. A Skeleton and a Soul work together to recover the person they once were: one player moves a light, and the other has to stay inside the shadows it casts. Made in RIT's IGME-601. Source on <a href="https://github.com/kxiao712/MAXXL">GitHub</a>.</p>
+      <a class="more" href="https://qusr.itch.io/gravebound">Play on itch.io →</a>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <span class="label">Experience</span>
+  <div class="roll">
+    <div class="row"><div class="when">Jul – Aug 2025</div><div>
+      <h3>Tencent <small>QA Product Division · Intern</small></h3>
+      <p>QA and user testing for international products including WeTest. Built a mobile app on my own to demo the division's testing services to external partners. Helped design test plans and tracked feedback across several dev cycles.</p></div></div>
+    <div class="row"><div class="when">2020 – present</div><div>
+      <h3>Corner Seat Studios <small>Co-founder · Lead Developer</small></h3>
+      <p>Indie studio shipping game-jam projects on fixed deadlines. I handle programming, interaction design, UX and direction. Six titles on itch.io.</p></div></div>
+    <div class="row"><div class="when">Jun – Aug 2022</div><div>
+      <h3>Klipsch <small>Engineering Intern</small></h3>
+      <p>Built a proof-of-concept feature for the Klipsch Connect app (500+ App Store ratings): pink-noise tools that calibrate audio to a room's acoustics.</p></div></div>
+    <div class="row"><div class="when">2020 · 2024</div><div>
+      <h3>Rayleigh Labs <small>Market Research · PR</small></h3>
+      <p>Researched consumer demand for gaming audio; the findings fed into the launch of the OXS soundbar. Ran post-launch customer surveys.</p></div></div>
+  </div>
+</section>
+
+<section id="elsewhere">
+  <span class="label">Elsewhere</span>
+  <div class="links">
+    <a href="https://cornerseatstudios.itch.io"><b>itch.io</b><span>All Corner Seat games</span></a>
+    <a href="https://www.youtube.com/playlist?list=PL9ef54w1ViLpRmGqL6_jKtIPXXuoV7iau"><b>Level design</b><span>YouTube walkthroughs</span></a>
+    <a href="https://superb-porch-93f.notion.site/Document-26eda6d85d7a80db8affcc0b0ccea535"><b>Ashfall docs</b><span>Design documentation</span></a>
+    <a href="https://github.com/kxiao712"><b>GitHub</b><span>GMTK2023 · MAXXL</span></a>
+    <a href="https://www.nexusmods.com/skyrimspecialedition/users/89746523"><b>Nexus Mods</b><span>Skyrim SE mods</span></a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div>
+    <div class="label">Get in touch</div>
+    <div class="email">kevinxiao712@gmail.com</div>
+  </div>
+  <div class="label">Rochester, NY · English / Chinese</div>
+</footer>
+</div>
+</body>
+</html>
